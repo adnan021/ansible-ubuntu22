@@ -1,0 +1,19 @@
+---
+- hosts: localhost #all_servers
+  tasks:
+  # python_version is a given variable, eg. 3.x
+  - name: Check if python is already latest
+    command: python3 --version
+    register: python_version_result
+    #failed_when: "{{ python_version_result.stdout | replace('Python ', '') | version_compare(python_version, '>=') }}"
+  - name: Display the version information
+    debug:
+      var: python_version_result.stdout_lines
+
+  - name: Check if docker is already latest
+    command: docker --version
+    register: docker_version_result
+    #failed_when: "{{ python_version_result.stdout | replace('Python ', '') | version_compare(python_version, '>=') }}"
+  - name: Display the version information
+    debug:
+      var: docker_version_result.stdout_lines

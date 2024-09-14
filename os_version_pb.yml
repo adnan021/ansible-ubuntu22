@@ -1,0 +1,9 @@
+---
+- hosts: localhost #all_servers
+  tasks:
+  - name: View version information
+    command: lsb_release -a
+    register: version_info
+  - name: Display the version information
+    debug:
+      var: version_info.stdout_lines

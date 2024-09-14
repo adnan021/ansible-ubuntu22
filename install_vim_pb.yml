@@ -1,0 +1,9 @@
+---
+- name: Install Vim
+  hosts: local
+  become: yes
+  tasks:
+    - name: Install vim
+      apt:
+        name: vim
+        state: present
